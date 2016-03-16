@@ -12,8 +12,15 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+
+BOOTSTRAP3_FOLDER = os.path.abspath(os.path.join(BASE_DIR, '..', 'bootstrap3'))
+if BOOTSTRAP3_FOLDER not in sys.path:
+    sys.path.insert(0, BOOTSTRAP3_FOLDER)
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -103,3 +111,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+BOOTSTRAP3 = {
+    'set_required': False,
+    'error_css_class': 'bootstrap3-error',
+    'required_css_class': 'bootstrap3-required',
+    'javascript_in_head': True,
+}
